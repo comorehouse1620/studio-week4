@@ -54,22 +54,18 @@
     L.geoJson( hoodData ).addTo(map);
     }); 
 
-
-
     // Load GeoJSON from an external file
     $.getJSON("data/rodents.geojson",function(data){
         var ratIcon = L.icon({
-            iconUrl: 'images/remy.png',
-            iconSize: [60,50]
+            iconUrl: 'images/rat.png',
+            iconSize: [50,40]
         });
         // add GeoJSON layer to the map once the file is loaded
-        L.geoJson(data,{
-            pointToLayer: function(feature,latlng){
-                var marker = L.marker(latlng,{icon: ratIcon});
-                marker.bindPopup(feature.properties.Location + '<br/>' + feature.properties.OPEN_DT);
-                return marker;
+        L.geoJson(data  ,{
+             pointToLayer: function(feature,latlng){
+            return L.marker(latlng,{icon: ratIcon});
             }
-        }).addTo(map);
+        }  ).addTo(map);
         });
 
   </script>
