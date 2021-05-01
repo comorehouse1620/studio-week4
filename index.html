@@ -49,17 +49,10 @@
      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
    }).addTo(map);
 
-   // Load GeoJSON from an external file
-   $.getJSON("data/neighborhoods.geojson",function(hoodData){
-    L.geoJson( hoodData ).addTo(map);
-    }); 
-
-
-
     // Load GeoJSON from an external file
     $.getJSON("data/rodents.geojson",function(data){
         var ratIcon = L.icon({
-            iconUrl: 'images/remy.png',
+            iconUrl: 'https://lh3.googleusercontent.com/proxy/V7bSAnWeV4MUH0orJ4sgIzmDLcaiDNDEvaykW3yj2ySzap7z59TfQwHgYpZt7UnSlqBdsiVJLo4qNR_Q3-lZMJUFVLO2sgyZgG1uFvt5',
             iconSize: [60,50]
         });
         // add GeoJSON layer to the map once the file is loaded
