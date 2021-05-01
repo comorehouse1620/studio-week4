@@ -116,32 +116,6 @@
       map.addLayer(clusters);
 
     });
-    // Create Leaflet Control Object for Legend
-    var legend = L.control({position: 'topright'});
-
-    // Function that runs when legend is added to map
-    legend.onAdd = function (map) {
-
-    // Create Div Element and Populate it with HTML
-    var div = L.DomUtil.create('div', 'legend');
-    div.innerHTML += '<b>Rat Density per sq. mi.</b><br />';
-    div.innerHTML += '<b>by Neighborhood</b><br/>';
-    div.innerHTML += '<i style="background: #993404"></i><p>> 80</p>';
-    div.innerHTML += '<i style="background: #d95f0e"></i><p>> 40</p>';
-    div.innerHTML += '<i style="background: #fe9929"></i><p>> 20</p>';
-    div.innerHTML += '<i style="background: #fed98e"></i><p>> 10</p>';
-    div.innerHTML += '<i style="background: #ffffd4"></i><p>> 0</p>';
-    div.innerHTML += '<i style="background: #f7f7f7"></i><p>No Data</p>’;
-    div.innerHTML += '<hr><img src="rat.png"><p>Rat sighting.</p>';
-    div.innerHTML += '<img src="clusters.png"><p>Grouped rat sightings.</p>';
-
-    // Return the Legend div containing the HTML content
-    return div;
-
-    };
-
-    // Add Legend to Map
-    legend.addTo(map);
   </script>
 </body>
 </html>
