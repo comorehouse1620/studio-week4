@@ -14,60 +14,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
   <style>
   /* Row 1 Maps */
-      #mapId { /* Main Final Map Center Top */
-      position: fixed;
-      margin-bottom: 1%;
-      top: 250px;
-      bottom: 400px;
-      width: 100%;
-        }
-      #map_steps { /* Left Container with Text */
-      position: fixed;
-      margin-top: 1%;
-      margin-bottom: 1%;
-      margin-left: 1%;
-      top: 600px;
-      left: 0%;
-      bottom: 250px;
-      width: 24.5%;
-      text-align: center;
-      display: flex;
-        }
-      #map1 { /* Middle Left Map */
-      position: fixed;
-      margin: 1%;
-      top: 550px;
-      left: 25%;
-      bottom: 200px;
-      width: 24.5%;
-        }
-      #map2 { /* Middle Right Map */
-      position: fixed;
-      margin: 1%;
-      top: 550px;
-      left: 50%;
-      bottom: 200px;
-      width: 24.5%;
-        }
-      #map3 { /* Top Right Map */
-      position: fixed;
-      margin-top: 1%;
-      margin-bottom: 1%;
-      margin-left: 1%;
-      top: 550px;
-      left: 75%;
-      bottom: 200px;
-      width: 24.5%;
-        }
-      /* Row 2 Maps */
-      #map4 { /* Bottom Left Map */
-      position: fixed;
-      margin-top: 1%;
-      margin-right: 1%;
-      top: 750px;
-      left: 0%;
-      bottom: 0px;
-      width: 24.5%;
+      #map { /* Main Final Map Center Top */
+        position: absolute;
+        top: 200px;
+        bottom: 0;
+        width: 100%;
         }
   </style>
   <!-- Adding styling info for page layout by reading in a CSS file -->
@@ -88,14 +39,7 @@
   <br>
 
   <!-- div map container -->
-  <div id="mapId"></div>
-  <div id="map_steps">
-      <h2>Steps 1-7</h2>
-  </div>
-  <div id="map1"></div>
-  <div id="map2"></div>
-  <div id="map3"></div>
-  <div id="map4"></div>
+  <div id="map"></div>
   <script>
   // Main Heat Map
   // initialize the map
@@ -106,90 +50,11 @@
     maxZoom: 17,
     minZoom: 9
   }).addTo(map);
-  $.getJSON("rodents.geojson",function(data){
-      var ratIcon = L.icon({
-      iconUrl: 'rat.png',
-      iconSize: [50,40]
-    });
-    L.geoJson(data  ,{
-      pointToLayer: function(feature,latlng){
-        var marker = L.marker(latlng,{icon: ratIcon});
-        marker.bindPopup(feature.properties.Location + '<br/>' + feature.properties.OPEN_DT);
-        return marker;
-      }
-    }  ).addTo(map);
-  });
 
-
-  // Step 1: Add Bike lanes
-  var map_s1 = L.map('map1').setView([42.35, -71.08], 13);
-  // load a tile layer
-  L.tileLayer('http://tiles.mapc.org/basemap/{z}/{x}/{y}.png', {
-    attribution: 'Tiles by <a href="http://mapc.org">MAPC</a>, Data by <a href="http://mass.gov/mgis">MassGIS</a>',
-    maxZoom: 17,
-    minZoom: 9
-  }).addTo(map_s1);
-  // bike lanes
-  L.tileLayer('http://tiles.mapc.org/trailmap-onroad/{z}/{x}/{y}.png',
-  {
-    maxZoom: 17,
-    minZoom: 9
-  }).addTo(map_s1);
-
-  // Step 2: Rat Points
-  var map_s2 = L.map('map2').setView([42.35, -71.08], 13);
-  // load a tile layer
-  L.tileLayer('http://tiles.mapc.org/basemap/{z}/{x}/{y}.png', {
-    attribution: 'Tiles by <a href="http://mapc.org">MAPC</a>, Data by <a href="http://mass.gov/mgis">MassGIS</a>',
-    maxZoom: 17,
-    minZoom: 9
-  }).addTo(map_s2);
-  // load GeoJSON from an external file
-  $.getJSON("rodents.geojson",function(data){
+    // load GeoJSON from an external file
+    $.getJSON("rodents.geojson",function(data){
     // add GeoJSON layer to the map once the file is loaded
-    L.geoJson(data).addTo(map_s2);
-  });
-
-  //Step 3: Rat Gif Map
-  var map_s3 = L.map('map3').setView([42.35, -71.08], 13);
-  // load a tile layer
-  L.tileLayer('http://tiles.mapc.org/basemap/{z}/{x}/{y}.png', {
-    attribution: 'Tiles by <a href="http://mapc.org">MAPC</a>, Data by <a href="http://mass.gov/mgis">MassGIS</a>',
-    maxZoom: 17,
-    minZoom: 9
-  }).addTo(map_s3);
-  $.getJSON("rodents.geojson",function(data){
-      var ratIcon = L.icon({
-      iconUrl: 'rat.gif',
-      iconSize: [50,40]
-    });
-    L.geoJson(data  ,{
-      pointToLayer: function(feature,latlng){
-      return L.marker(latlng,{icon: ratIcon});
-      }
-    }  ).addTo(map_s3);
-  });
-
-  // Step 4: Add Interaction
-  var map_s4 = L.map('map4').setView([42.35, -71.08], 13);
-  // load a tile layer
-  L.tileLayer('http://tiles.mapc.org/basemap/{z}/{x}/{y}.png', {
-    attribution: 'Tiles by <a href="http://mapc.org">MAPC</a>, Data by <a href="http://mass.gov/mgis">MassGIS</a>',
-    maxZoom: 17,
-    minZoom: 9
-  }).addTo(map_s4);
-  $.getJSON("rodents.geojson",function(data){
-      var ratIcon = L.icon({
-      iconUrl: 'rat.png',
-      iconSize: [50,40]
-    });
-    L.geoJson(data  ,{
-      pointToLayer: function(feature,latlng){
-        var marker = L.marker(latlng,{icon: ratIcon});
-        marker.bindPopup(feature.properties.Location + '<br/>' + feature.properties.OPEN_DT);
-        return marker;
-      }
-    }  ).addTo(map_s4);
+    L.geoJson(data).addTo(map);
   });
   </script>
 </body>
