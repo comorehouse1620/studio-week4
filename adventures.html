@@ -103,7 +103,7 @@
     var map = new mapboxgl.Map({
       container: 'map', // container id
       style: 'mapbox://styles/mapbox/streets-v11', // YOUR TURN: choose a style: https://docs.mapbox.com/api/maps/#styles
-      center: [-71.315823, 41813865], // starting position [lng, lat]
+      center: [-122.411, 37.785], // starting position [lng, lat]
       zoom: 10,// starting zoom
       transformRequest: transformRequest
     });
@@ -112,7 +112,7 @@
       $.ajax({
         type: "GET",
         //YOUR TURN: Replace with csv export link
-        url: 'https://docs.google.com/spreadsheets/d/19M8XYkIBIXk7O6QQCIp3fz_vibe1o30x_IbTs9cL5F0/gviz/tq?tqx=out:csv&sheet=Sheet1',
+        url: 'https://docs.google.com/spreadsheets/d/1y-v1lBRaUqx9XNqIxIwP4HZeoopIIn_EyamJ4OykCDA/gviz/tq?tqx=out:csv&sheet=Sheet1',
         dataType: "text",
         success: function (csvData) { makeGeoJSON(csvData); }
       });
@@ -150,7 +150,7 @@
               //set popup text
               //You can adjust the values of the popup to match the headers of your CSV.
               // For example: e.features[0].properties.Name is retrieving information from the field Name in the original CSV.
-              //var description = `<h3>` + e.features[0].properties.Name + `</h3>` + `<h4>` + `<b>` + `Address: ` + `</b>` + e.features[0].properties.Zoning + `</h4>` + `<h4>` + `<b>` + `Square Footage: ` + `</b>` + e.features[0].properties.SqFt + `</h4>`+ `Zoning District: ` + `</b>` + e.features[0].properties.Zoning + `</h4>` + `<h4>` + `<b>`;
+              var description = `<h3>` + e.features[0].properties.Name + `</h3>` + `<h4>` + `<b>` + `Address: ` + `</b>` + e.features[0].properties.Address + `</h4>` + `<h4>` + `<b>` + `Phone: ` + `</b>` + e.features[0].properties.Phone + `</h4>`;
 
               // Ensure that if the map is zoomed out such that multiple
               // copies of the feature are visible, the popup appears
