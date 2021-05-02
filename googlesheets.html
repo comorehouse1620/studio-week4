@@ -2,6 +2,7 @@
 <html>
 
 <head>
+  <title>Studio Week 4</title>
   <meta charset='utf-8' />
   <title></title>
   <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
@@ -73,10 +74,11 @@
       border-bottom-color: rgb(61, 59, 59);
     }
   </style>
+<!-- Adding styling info for page layout by reading in a CSS file -->
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    </div>
 
     <h1>Studio Week 4 </h1>
     <!-- Add multiple pages to web page-->
@@ -100,9 +102,9 @@
           : url
       };
     };
-    //YOUR TURN: add your Mapbox token
+    //Mapbox token
     
-    mapboxgl.accessToken = 'pk.eyJ1IjoibWFwYm94LWNvbW11bml0eSIsImEiOiJja2tkN21jcjAwMG51MnBxdHAxemdueGpzIn0.e0IzLkytGq4pcGGieP8KNA'; //Mapbox token 
+    mapboxgl.accessToken = 'pk.eyJ1IjoiY29tb3JlaG91c2UxNjIwIiwiYSI6ImNrbGpzdG9zazBudW0ydXBmZDE4Nmx2cHgifQ.mVF4ibqhEiChmb8ShMbehQ';
     var map = new mapboxgl.Map({
       container: 'map', // container id
       style: 'mapbox://styles/mapbox/streets-v11', // YOUR TURN: choose a style: https://docs.mapbox.com/api/maps/#styles
