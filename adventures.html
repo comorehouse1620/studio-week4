@@ -103,16 +103,17 @@
     var map = new mapboxgl.Map({
       container: 'map', // container id
       style: 'mapbox://styles/mapbox/streets-v11', // YOUR TURN: choose a style: https://docs.mapbox.com/api/maps/#styles
-      center: [-122.411, 37.785], // starting position [lng, lat]
+      center: [-71.36929415143653, 41.80953633583873], // starting position [lng, lat]
       zoom: 10,// starting zoom
       transformRequest: transformRequest
     });
+
 
     $(document).ready(function () {
       $.ajax({
         type: "GET",
         //YOUR TURN: Replace with csv export link
-        url: 'https://docs.google.com/spreadsheets/d/1y-v1lBRaUqx9XNqIxIwP4HZeoopIIn_EyamJ4OykCDA/gviz/tq?tqx=out:csv&sheet=Sheet1',
+        url: 'https://docs.google.com/spreadsheets/d/19M8XYkIBIXk7O6QQCIp3fz_vibe1o30x_IbTs9cL5F0/gviz/tq?tqx=out:csv&sheet=Sheet1',
         dataType: "text",
         success: function (csvData) { makeGeoJSON(csvData); }
       });
@@ -136,8 +137,8 @@
                 'data': data
               },
               'paint': {
-                'circle-radius': 5,
-                'circle-color': "purple"
+                'circle-radius': 6,
+                'circle-color': "blue"
               }
             });
 
